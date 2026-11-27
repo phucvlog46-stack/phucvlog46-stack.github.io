@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bàn cờ Caro</title>
+    <!-- Nhúng thư viện jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        .controls button {
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 0 3px;
+        }
+        #caro-board {
+            display: inline-block;
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+        .row {
+            display: flex;
+        }
+        /* Định dạng dòng chẵn / lẻ màu sắc khác nhau theo yêu cầu */
+        .row:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .row:nth-child(even) {
+            background-color: #eef2f5;
+        }
+        .cell {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+        .cell:hover {
+            background-color: #d1e7dd;
+        }
+        .title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button id="btn-hide">Hide</button>
+        <button id="btn-show">Show</button>
+        <button id="btn-toggle">Toggle</button>
+    </div>
+
+    <div id="caro-board">
+        <!-- Bàn cờ sẽ được tạo tự động bằng jQuery hoặc viết tĩnh HTML -->
+    </div>
+
+    <div class="title">CARO GAME</div>
+
+    <script>
+        $(document).ready(function() {
+            const boardSize = 10; // Kích thước bàn cờ 10x10
+            let $board = $("#caro-board");
+            let turn = 0; // 0: Đánh X, 1: Đánh O
+
+            // Tạo các ô cho bàn cờ
+            for (let i = 0; i < boardSize; i++) {
+                let $row = $("<div class='row'></div>");
+                for (let j = 0; j < boardSize; j++) {
+                    let $cell = $("<div class='cell'></div>");
+                    $row.append($cell);
+                }
+                $board.append($row);
+            }
+
+            // Xử lý sự kiện đánh X, O xen kẽ
+            $(".cell").click(function() {
+                // Chỉ điền nếu ô chưa có giá trị
+                if ($(this).text() === "") {
+                    if (turn === 0) {
+                        $(this).text("X");
+                        turn = 1;
+                    } else {
+                        $(this).text("O");
+                        turn = 0;
+                    }
+                }
+            });
+
+            // Hiệu ứng Hide, Show, Toggle cho bàn cờ
+            $("#btn-hide").click(function() {
+                $("#caro-board").hide(500);
+            });
+
+            $("#btn-show").click(function() {
+                $("#caro-board").show(500);
+            });
+
+            $("#btn-toggle").click(function() {
+                $("#caro-board").toggle(500);
+            });
+        });
+    </script>
+
+</body>
+</html>

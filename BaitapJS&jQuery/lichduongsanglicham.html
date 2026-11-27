@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi năm dương lịch sang âm lịch</title>
+</head>
+<body>
+    <h2>Chuyển đổi năm Dương lịch sang Âm lịch</h2>
+    <script>
+        let nam_duong_lich = parseInt(prompt("Nhập năm dương lịch:"));
+        
+        let can_index = nam_duong_lich % 10;
+        let chi_index = nam_duong_lich % 12;
+        
+        let can = "", chi = "";
+
+        switch (can_index) {
+            case 0: can = "Canh"; break;
+            case 1: can = "Tân"; break;
+            case 2: can = "Nhâm"; break;
+            case 3: can = "Quý"; break;
+            case 4: can = "Giáp"; break;
+            case 5: can = "Ất"; break;
+            case 6: can = "Bính"; break;
+            case 7: can = "Đinh"; break;
+            case 8: can = "Mậu"; break;
+            case 9: can = "Kỷ"; break;
+        }
+
+        switch (chi_index) {
+            case 0: chi = "Thân"; break;
+            case 1: chi = "Dậu"; break;
+            case 2: chi = "Tuất"; break;
+            case 3: chi = "Hợi"; break;
+            case 4: chi = "Tý"; break;
+            case 5: chi = "Sửu"; break;
+            case 6: chi = "Dần"; break;
+            case 7: chi = "Mẹo"; break;
+            case 8: chi = "Thìn"; break;
+            case 9: chi = "Tỵ"; break;
+            case 10: chi = "Ngọ"; break;
+            case 11: chi = "Mùi"; break;
+        }
+
+        alert("Năm " + nam_duong_lich + " là năm: " + can + " " + chi);
+    </script>
+</body>
+</html>

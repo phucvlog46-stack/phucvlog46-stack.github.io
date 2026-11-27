@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi suất ngân hàng</title>
+</head>
+<body>
+    <h2>Tính lãi suất đơn</h2>
+    <script>
+        let soTienVay = parseFloat(prompt("Nhập số tiền vay (triệu đồng):"));
+        let laiSuat = parseFloat(prompt("Nhập lãi suất (%/năm):"));
+        let soNam = parseInt(prompt("Nhập số năm (n):"));
+
+        let tienLaiMoiNam = soTienVay * (laiSuat / 100);
+        let tongTienPhaiTra = soTienVay + soNam * tienLaiMoiNam;
+
+        alert("Số tiền lãi mỗi năm: " + tienLaiMoiNam + " (triệu đồng)\n" +
+              "Tổng số tiền cả gốc lẫn lãi sau " + soNam + " năm là: " + tongTienPhaiTra + " (triệu đồng)");
+    </script>
+</body>
+</html>

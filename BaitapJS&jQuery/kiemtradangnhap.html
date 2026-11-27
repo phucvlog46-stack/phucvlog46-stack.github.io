@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <style>
+        table { border-collapse: collapse; width: 350px; margin: 30px auto; font-family: Arial, sans-serif; }
+        td { border: 1px solid #333; padding: 8px; }
+        input[type="text"], input[type="password"] { width: 95%; padding: 4px; }
+        #thongbao { font-weight: bold; }
+    </style>
+    <!-- Nhúng thư viện jQuery từ CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <table>
+        <tr class="row-user">
+            <td>Username</td>
+            <td><input type="text" id="username" placeholder="Nhập username"></td>
+        </tr>
+        <tr class="row-pass">
+            <td>Password</td>
+            <td><input type="password" id="password" placeholder="Nhập password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" id="thongbao">thongbao</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button id="btnLogin">Login</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // Mặc định ban đầu ẩn hoặc để trống dòng thông báo tùy ý
+            $("#thongbao").text("");
+
+            $("#btnLogin").click(function() {
+                let user = $("#username").val();
+                let pass = $("#password").val();
+
+                if (user === "admin" && pass === "admin") {
+                    // Trường hợp thành công
+                    $("#thongbao").css("color", "green").text("Chúc mừng, bạn đã đăng nhập thành công!");
+                    
+                    // Nâng cao: Ẩn các ô input và đổi nút Login thành Logout
+                    $(".row-user, .row-pass").hide();
+                    $(this).text("Logout");
+                } else {
+                    // Trường hợp sai thông tin
+                    $("#thongbao").css("color", "red").text("Sai thông tin đăng nhập !");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
